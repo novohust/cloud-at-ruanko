@@ -1,0 +1,417 @@
+@font-face {
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lobster'), url(../fonts/MWVf-Rwh4GLQVBEwbyI61Q.woff) format('woff');
+}
+
+label{
+	font-size:12px;
+}
+
+.file-name{
+	font-size: 12px;
+	padding-left: 15px;
+	color: whiteSmoke;
+	font-weight: bold;
+	display:none;
+	max-width:145px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+a:focus {
+	outline: none;
+}
+
+body {
+	background: #F2F2EB url(../img/textured_background.jpg);
+	color: #3F3838;
+	font-family: "微软雅黑", Arial, "宋体";
+}
+
+.header {
+	z-index: 102;
+	height: 5px;
+	position: relative;
+}
+
+#popup-wrapper{
+	position: absolute;
+	left: 50%;
+	margin-left: -250px;
+	z-index: 100;
+	top: -447px; /*popup 1px border * 2 + pop up height 250px - header height 5px*/
+}
+
+#popup,#popup-handler{
+	border:solid 1px #4B4B4B;
+}
+
+#popup{
+	color:white;
+	height: 450px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	width: 500px;
+	margin: 0 auto;
+	border-radius: 0 0 5px 5px;
+}
+
+#popup-handler{
+	border-radius: 0 0 4px 4px;
+	bottom: 0;
+	cursor: pointer;
+	height: 20px;
+	text-align: center;
+	width: 70px;
+	margin: 0 auto;
+	line-height: 24px;
+	margin-top: -1px;
+	border-top: none;
+	z-index: 80;
+	position: relative;
+}
+
+#popup-handler i{
+	display:inline-block;
+}
+
+#header-wrapper .shadowed{
+	box-shadow: 0 2px 5px #5E5E5E;
+}
+
+.header,#popup,#popup-handler{
+	/*background: #3E3E3B;*/
+	background: #646464;
+}
+
+div#wrapper {
+	padding-top: 60px;
+}
+
+#logo-wrapper{
+	position:relative;
+}
+
+
+#channel-menu{
+	position: absolute;
+	right: 43px;
+	bottom: 0;
+	font-size:12px !important;
+}
+
+.logo {
+	position: relative;
+	width: 300px;
+	height: 70px;
+}
+
+.logo a {
+	display: inline-block;
+	position: absolute;
+	top: -25px;
+}
+
+.logo img {
+	width: 80px;
+}
+
+.logo-text {
+	display: inline-block;
+	font-family: Lobster;
+	font-size: 85px;
+	letter-spacing: 3px;
+	margin-left: 90px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.logo-shadow { /* thanks to google reader!*/
+	background-image: radial-gradient(ellipse farthest-side at center top, rgba(0, 0, 0, 0.3),
+		transparent );
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .3)
+		), to(transparent) );
+	-webkit-mask-box-image: -webkit-gradient(linear, left top, right top, color-stop(0.0, rgba(0, 0,
+		0, 0) ), color-stop(0.5, rgba(0, 0, 0, .8) ),
+		color-stop(1.0, rgba(0, 0, 0, 0) ) );
+	background-image: -moz-radial-gradient(top, ellipse farthest-side, rgba(0, 0, 0, .3),
+		transparent );
+	height: 7px;
+}
+
+.songs {
+	height: 325px;
+	margin: 0 35px;
+	position: relative;
+}
+
+.history-bar {
+	bottom: -10px;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+}
+
+#history-inner {
+	left: 0;
+	margin-left: 560px; /*4首歌的长度 140*4*/
+	overflow: hidden;
+	padding: 10px;
+	/*为了显示内部元素的阴影，给10px padding，padding-bottom由外部容器用负的bottom补偿*/
+	width: 99999px;
+}
+
+.song-listened {
+	float: left;
+	margin: 0 40px 0 0;
+	position: relative;
+}
+
+.song-listened>a {
+	background-color: white;
+	display: block;
+	opacity: 0.75;
+}
+
+.songs img {
+	border-radius: 2px 2px 2px 2px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.song-listened img {
+	width: 100px;
+	height: 100px;
+}
+
+.gloss {
+	background: url("../img/sheen3.png") no-repeat scroll 0 0 transparent;
+	display: block;
+	height: 100px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100px;
+	z-index: 90;
+	cursor: pointer;
+}
+
+.current-song {
+	bottom: 0;
+	position: absolute;
+	right: 10px;
+	width: 290px;
+	height: 290px;
+	z-index: 99;
+}
+
+.current-song-loading {
+	box-shadow: 0 3px 7px #DDD;
+	background-color: white;
+	text-align: center;
+	line-height: 290px;
+}
+
+img#loading {
+	display: inline-block;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+#cur-song-img {
+	width: 100%;
+	height: 100%;
+}
+
+#song-info {
+	position: absolute;
+	top: 36px;
+	left: 10px; /*与history-inner的padding一致*/
+	width: 520px;
+	display: none;
+}
+
+#song-info>div {
+	margin-bottom: 2px;
+	font-size: 12px;
+	color: #959595;
+}
+
+#song-name {
+	font-size: 30px;
+	line-height: 45px;
+	/*color: inherit;*/
+	color: #3F3838;
+}
+
+.song-singer {
+	font-size: 12px;
+}
+
+#song-album-wrapper {
+	margin-top: 40px;
+}
+
+#song-album-a {
+	font-weight: bold;
+}
+
+#release-date {
+	padding: 0 7px;
+}
+
+/*播放器*/
+.player {
+	position: relative;
+	margin-top: 40px;
+	overflow: hidden;
+}
+
+div#zen {
+	margin-left: -50px;
+	position: absolute;
+}
+
+.tooltip-inner {
+	text-align: left !important;
+	max-width: 500px;
+}
+
+#player-inner {
+	height: 104px;
+	padding: 5px 0;
+}
+
+#player-inner>* {
+	left: 50%;
+	position: absolute;
+}
+
+#player-inner>a {
+	top: 28px;
+	opacity: 0.75;
+}
+
+#next {
+	margin-left: -110px;
+}
+
+a#volume-icon {
+	margin-left: 63px;
+	top: 22px;
+}
+
+#volume {
+	bottom: 5px;
+	margin-left: 118px;
+	position: relative;
+}
+
+#volume-tooltip {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: -moz-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%,
+		rgba(0, 0, 0, 0.5) 100% );
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69,
+		72, 77, 0.5) ), color-stop(100%, rgba(0, 0, 0, 0.5) ) );
+	background: -webkit-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%,
+		rgba(0, 0, 0, 0.5) 100% );
+	background: -o-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%,
+		rgba(0, 0, 0, 0.5) 100% );
+	background: -ms-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%,
+		rgba(0, 0, 0, 0.5) 100% );
+	background: linear-gradient(top, rgba(69, 72, 77, 0.5) 0%,
+		rgba(0, 0, 0, 0.5) 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(    startColorstr='#8045484d',
+		endColorstr='#80000000', GradientType=0 );
+	border: 1px solid #333333;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.3);
+	color: #FFFFFF;
+	display: block;
+	font: 10pt Tahoma, Arial, sans-serif;
+	height: 20px;
+	position: absolute;
+	text-align: center;
+	top: 20px;
+	width: 35px;
+}
+
+#volume-slider {
+	background-color: #898989;
+	border-color: #333333 #333333 #777777;
+	border-radius: 25px 25px 25px 25px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5) inset, 0 1px 0 0
+		rgba(250, 250, 250, 0.5);
+	height: 9px;
+	margin-top: -3px;
+	left: 15px;
+	position: absolute;
+	width: 100px;
+	top: 52px;
+}
+
+.ui-slider-range {
+	background: #007CC2;
+	border: 0 none;
+	border-radius: 25px 25px 25px 25px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.ui-slider-handle {
+	background: url("../img/handle.png") no-repeat scroll 50% 50%
+		transparent;
+	color: #1C94C4;
+	cursor: pointer;
+	font-weight: bold;
+	height: 25px;
+	margin-left: -12px;
+	outline: none;
+	position: absolute;
+	top: -9px;
+	width: 25px;
+	z-index: 2;
+}
+
+/*form*/
+#uploading-tip{
+	position: absolute;
+	left: 50%;
+	top: 22px;
+	width: 65px;
+	margin-left: 20px;
+}
+#btn-add-track{
+	position: relative;
+}
+
+#upload-track-form input{
+	font-size:12px;
+}
+
+/*  ---Trick to beautify file input  START*/
+.btn input{
+	opacity: 0;
+	filter: alpha(opacity=0);
+	font-size: 100px !important;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor:pointer;
+}
+
+.btn-file{
+	position: relative;
+	overflow: hidden;
+}
+/*  ---Trick to beautify file input  END*/
