@@ -21,7 +21,7 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.hustsse.listenfm.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -57,7 +57,7 @@ public class BusfmMp3Fetcher implements Runnable {
 		this.rootDir = rootDir;
 	}
 
-	private static BlockingQueue<Track> tracks = new LinkedBlockingDeque<Track>(4000);
+	private static BlockingQueue<Track_Old> tracks = new LinkedBlockingDeque<Track_Old>(4000);
 
 	@Autowired
 	private TrackService trackService;
@@ -70,7 +70,7 @@ public class BusfmMp3Fetcher implements Runnable {
 
 	public void run() {
 		while (true) {
-			Track t = null;
+			Track_Old t = null;
 			try {
 				t = tracks.poll(Integer.MAX_VALUE, TimeUnit.DAYS);
 			} catch (InterruptedException e1) {
@@ -160,7 +160,7 @@ public class BusfmMp3Fetcher implements Runnable {
 		}
 	}
 
-	public static boolean enqueue(Track t) {
+	public static boolean enqueue(Track_Old t) {
 		try {
 			return tracks.offer(t, Integer.MAX_VALUE, TimeUnit.DAYS);
 		} catch (InterruptedException e) {

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.hustsse.listenfm.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class TrackController {
 	@RequestMapping(value = "/random/{num}")
 	@ResponseBody
 	public AjaxResult getRandomTracks(@PathVariable int num,@RequestParam(required=false) Long channelId) {
-		List<Track> tracks = trackService.findRandomTracks(num,channelId);
+		List<Track_Old> tracks = trackService.findRandomTracks(num,channelId);
 		return new AjaxResult(tracks);
 	}
 
@@ -39,7 +39,7 @@ public class TrackController {
 
 	@RequestMapping(value = "/add")
 	@ResponseBody
-	public AjaxResult addTrack(@ModelAttribute("track") Track track, @RequestParam(value = "mp3File") MultipartFile mp3File,
+	public AjaxResult addTrack(@ModelAttribute("track") Track_Old track, @RequestParam(value = "mp3File") MultipartFile mp3File,
 			@RequestParam(value = "imgFile") MultipartFile imgFile) {
 
 		File mp3Dir;

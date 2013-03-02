@@ -1,104 +1,107 @@
 package org.hustsse.listenfm.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+/**
+ * 实体类
+ * 对应到数据库表track，主键id由IdEntity类控制
+ * 2012-3-2
+ * @author ivan-lee
+ * */
 
 @Entity
 @Table
-public class Track extends IdEntity {
-	/* 从busfm抓到的属性 */
-	private Long busfmId;
-	private String name;
-	/** mp3 url，初始为busfm ftp服务器上的url，下载后会被替换成本地路径 */
-	private String mp3;
-	private String singer;
-	private String albumName;
-	/** 图片 url，初始外链豆瓣或bus.fm，下载后替换成本地路径 TODO */
-	private String img;
+public class Track  extends IdEntity{
 
-	// association
-	/** 频道 */
-	private Channel channel;
-	/** 专辑在豆瓣上的信息 */
-	private AlbumDoubanInfo albumDoubanInfo;
+	private String mp3_url;	//mp3文件url
+
+
+	private String lyrics;//歌词
+	private String name	;//歌曲名
+	private String album;//专辑名
+	private String album_img_url;//专辑图片url
+	private String artist;//歌手
+	private Date release_date;//发布日期
+	private Date upload_date;//上传日期
+	private long download_times;//下载次数
+	private long play_times;//播放次数
+	private long category_id;//类别id
 
 	public Track() {
-	};
-
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Track(Long id) {
 		super(id);
-	};
-
-	public Long getBusfmId() {
-		return busfmId;
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setBusfmId(Long busfmId) {
-		this.busfmId = busfmId;
+	public String getMp3_url() {
+		return mp3_url;
 	}
-
+	public void setMp3_url(String mp3_url) {
+		this.mp3_url = mp3_url;
+	}
+	public String getLyrics() {
+		return lyrics;
+	}
+	public void setLyrics(String lyrics) {
+		this.lyrics = lyrics;
+	}
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getMp3() {
-		return mp3;
+	public String getAlbum() {
+		return album;
 	}
-
-	public void setMp3(String mp3) {
-		this.mp3 = mp3;
+	public void setAlbum(String album) {
+		this.album = album;
 	}
-
-	public String getSinger() {
-		return singer;
+	public String getAlbum_img_url() {
+		return album_img_url;
 	}
-
-	public void setSinger(String singer) {
-		this.singer = singer;
+	public void setAlbum_img_url(String album_img_url) {
+		this.album_img_url = album_img_url;
 	}
-
-	public String getAlbumName() {
-		return albumName;
+	public String getArtist() {
+		return artist;
 	}
-
-	public void setAlbumName(String albumName) {
-		this.albumName = albumName;
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
-
-	public String getImg() {
-		return img;
+	public Date getRelease_date() {
+		return release_date;
 	}
-
-	public void setImg(String img) {
-		this.img = img;
+	public void setRelease_date(Date release_date) {
+		this.release_date = release_date;
 	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "channel_id")
-	public Channel getChannel() {
-		return channel;
+	public Date getUpload_date() {
+		return upload_date;
 	}
-
-	public void setChannel(Channel channel) {
-		this.channel = channel;
+	public void setUpload_date(Date upload_date) {
+		this.upload_date = upload_date;
 	}
-
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "track")
-	public AlbumDoubanInfo getAlbumDoubanInfo() {
-		return albumDoubanInfo;
+	public long getDownload_times() {
+		return download_times;
 	}
-
-	public void setAlbumDoubanInfo(AlbumDoubanInfo albumDoubanInfo) {
-		this.albumDoubanInfo = albumDoubanInfo;
+	public void setDownload_times(long download_times) {
+		this.download_times = download_times;
+	}
+	public long getPlay_times() {
+		return play_times;
+	}
+	public void setPlay_times(long play_times) {
+		this.play_times = play_times;
+	}
+	public long getCategory_id() {
+		return category_id;
+	}
+	public void setCategory_id(long category_id) {
+		this.category_id = category_id;
 	}
 }

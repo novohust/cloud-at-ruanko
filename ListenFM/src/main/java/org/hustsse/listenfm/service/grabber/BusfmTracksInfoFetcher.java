@@ -14,7 +14,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hustsse.listenfm.entity.Channel;
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.hustsse.listenfm.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -113,7 +113,7 @@ public class BusfmTracksInfoFetcher extends FrequencyFetcher {
 		String singer = elements[3];
 		String albumName = elements[4];
 		String img = elements[5];
-		Track t = new Track();
+		Track_Old t = new Track_Old();
 		t.setBusfmId(Long.valueOf(id));
 		t.setName(name);
 		t.setMp3(mp3);

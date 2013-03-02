@@ -35,7 +35,7 @@ public class AlbumDoubanInfo extends IdEntity{
 
 	// association
 	@JsonIgnore	//避免json化track的时候死循环
-	private Track track;
+	private Track_Old track;
 
 	public String getReleaseDate() {
 		return releaseDate;
@@ -128,11 +128,11 @@ public class AlbumDoubanInfo extends IdEntity{
 
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="track_id")
-	public Track getTrack() {
+	public Track_Old getTrack() {
 		return track;
 	}
 
-	public void setTrack(Track track) {
+	public void setTrack(Track_Old track) {
 		this.track = track;
 	}
 

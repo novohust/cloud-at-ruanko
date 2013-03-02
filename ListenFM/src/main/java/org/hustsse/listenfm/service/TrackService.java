@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 import org.hustsse.listenfm.dao.TrackDao;
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +19,11 @@ public class TrackService {
 	TrackDao trackDao;
 
 	@Transactional(readOnly = false)
-	public void save(Track c) {
+	public void save(Track_Old c) {
 		trackDao.save(c);
 	}
 
-	public Track findUniqueTrackByBusfmId(Long busfmId) {
+	public Track_Old findUniqueTrackByBusfmId(Long busfmId) {
 		return trackDao.findUniqueBy("busfmId", busfmId);
 	}
 
@@ -34,9 +34,9 @@ public class TrackService {
 	 * @param channelId
 	 * @return
 	 */
-	public List<Track> findRandomTracks(int num, Long channelId) {
+	public List<Track_Old> findRandomTracks(int num, Long channelId) {
 		Set<Long> selectedIds = new HashSet<Long>(num);
-		List<Track> result = new ArrayList<Track>(num);
+		List<Track_Old> result = new ArrayList<Track_Old>(num);
 		if (num <= 0)
 			return null;
 		Random r = new Random();
@@ -50,7 +50,7 @@ public class TrackService {
 		for (int i = 0; i < num;) {
 			long id = Math.abs(r.nextLong()) % count + minId;
 			if (!selectedIds.contains(id)) {
-				Track t = findTrackById(id);
+				Track_Old t = findTrackById(id);
 				if (t == null)
 					continue;
 				if(channelId != null && channelId != t.getChannel().getId())
@@ -65,11 +65,11 @@ public class TrackService {
 		return result;
 	}
 
-	private Track findTrackById(long id) {
+	private Track_Old findTrackById(long id) {
 		return trackDao.findUniqueBy("id", id);
 	}
 
-	private List<Track> findAllTracks() {
+	private List<Track_Old> findAllTracks() {
 		return trackDao.getAll();
 	}
 

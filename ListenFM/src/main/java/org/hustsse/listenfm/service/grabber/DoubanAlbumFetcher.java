@@ -16,7 +16,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hustsse.listenfm.entity.AlbumDoubanInfo;
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.hustsse.listenfm.service.AlbumDoubanInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DoubanAlbumFetcher extends FrequencyFetcher {
 
-	private static BlockingQueue<Track> tracks = new LinkedBlockingDeque<Track>(2000);
+	private static BlockingQueue<Track_Old> tracks = new LinkedBlockingDeque<Track_Old>(2000);
 	private static DefaultHttpClient httpClient = new DefaultHttpClient();
 	private static ObjectMapper mapper = new ObjectMapper();
 	private static final String QUERY_SPLIT = ", ";
@@ -47,7 +47,7 @@ public class DoubanAlbumFetcher extends FrequencyFetcher {
 		while (true) {
 			ensureFrequency();
 
-			Track track = null;
+			Track_Old track = null;
 			try {
 				track = tracks.poll(Integer.MAX_VALUE, TimeUnit.DAYS);
 			} catch (InterruptedException e1) {
@@ -158,7 +158,7 @@ public class DoubanAlbumFetcher extends FrequencyFetcher {
 		return i;
 	}
 
-	public static void enqueue(Track t) {
+	public static void enqueue(Track_Old t) {
 		try {
 			tracks.offer(t, Integer.MAX_VALUE, TimeUnit.DAYS);
 		} catch (InterruptedException e) {

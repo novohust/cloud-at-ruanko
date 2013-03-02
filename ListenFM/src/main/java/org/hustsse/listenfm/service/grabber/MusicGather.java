@@ -17,7 +17,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hustsse.listenfm.entity.Channel;
-import org.hustsse.listenfm.entity.Track;
+import org.hustsse.listenfm.entity.Track_Old;
 import org.hustsse.listenfm.service.ChannelService;
 import org.hustsse.listenfm.service.TrackService;
 import org.jsoup.Jsoup;
