@@ -1,0 +1,316 @@
+*,label,.btn {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	outline: none;
+}
+
+a:focus {
+	outline: 0
+}
+
+.track-list .accordion-inner {
+	overflow: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+}
+
+select,textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],.uneditable-input
+	{
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	height: 18px;
+	line-height: 18px;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+
+select,input[type="file"] {
+	height: 28px;
+	line-height: 28px;
+}
+
+ul {
+	margin: 0; padding; 0;
+	list-style: none;
+}
+
+.form-horizontal .control-label {
+	width: 140px;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 15px;
+}
+
+.form-horizontal .controls {
+	margin-left: 160px;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
+
+form {
+	padding: 0;
+	margin: 0;
+}
+
+#logo {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	padding-top: 2px;
+	width: 81px;
+}
+
+.navbar-inverse .nav .active>a,.navbar-inverse .nav .active>a:hover,.navbar-inverse .nav .active>a:focus
+	{
+	background-color: #222222;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) inset;
+	color: #FFFFFF;
+}
+
+.navbar .nav>li>a {
+	font-size: 14px;
+}
+
+#nav-top {
+	box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+#nav-top .navbar-inner {
+	border-radius: 0;
+}
+
+#nav-top .container,#content-wrapper {
+	width: 960px;
+}
+
+#content-wrapper {
+	margin: 0 auto;
+	min-height: 520px;
+}
+
+.white-panel {
+	background-color: white;
+	border: 1px solid #DADADA;
+	padding: 0px;
+	margin-bottom: 36px;
+	color: #333;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+/*歌曲列表  BEGIN*/
+h5 {
+	float: left;
+	margin: 0 15px 0 0;
+	line-height: 33px;
+}
+
+.track-list {
+	margin-top: 15px;
+}
+
+.track-list .accordion-group {
+	background: transparent;
+	border: none;
+	border-bottom: 1px dashed #DADADA;
+	border-radius: 0;
+}
+
+.track-list .accordion-group,.track-list .white-panel {
+	margin: 5px 0;
+}
+
+.track-list .accordion-heading {
+	padding: 4px 5px;;
+}
+
+.list-ul {
+	list-style: none outside none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+.list-ul li {
+	float: left;
+	margin-right: 20px;
+}
+
+.list-no {
+	color: #999999;
+	padding-left: 5px;
+	width: 35px;
+}
+
+.list-track-name {
+	width: 200px;
+}
+
+.list-track-name a {
+	font-size: 14px;
+}
+
+.list-artist {
+	width: 130px;
+}
+
+.list-album {
+	width: 180px;
+}
+
+.list-uploadtime {
+	width: 125px;
+}
+
+.list-ul .list-action {
+	margin-right: 0;
+	text-align: right;
+	width: 165px;
+}
+
+.list-ul .list-action  i:hover {
+	opacity: 1;
+	transition: opacity 0.2s linear;
+}
+
+.list-ul .list-action  a{
+	opacity: 0.4;
+	margin-left: 3px;
+	cursor: pointer;
+	padding-top:7px;
+}
+
+.track-list .white-panel .accordion-heading {
+	background: none repeat scroll 0 0 #F1F1F1;
+	border-radius: 5px 5px 0 0;
+}
+
+.track-detail-wrapper {
+	padding-top: 5px;
+}
+
+.detail-left {
+	float: left;
+	width: 170px;
+	padding-right: 10px;
+}
+
+.detail-left img {
+	box-shadow: 0 1px 3px #999999;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+.album-info {
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+
+.album-info li {
+	line-height: 25px;
+}
+
+.album-info *{
+	line-height:12px;
+}
+.album-info label {
+	cursor: default;
+	color: #999999;
+	display: inline-block;
+	margin: 0;
+	padding-right: 10px;
+	text-align: right;
+	width: 55px;
+}
+
+.album-info .album-attr-value {
+	word-break: break-all;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 105px;
+	display: inline-block;
+}
+
+.detail-right {
+	float: left;
+	margin-left: 25px;
+	width: 723px;
+}
+
+.comment-title {
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.comment-title * {
+	float: left;
+}
+
+.comment-title h6 {
+	margin: 0;
+	padding-right: 10px;
+}
+
+.comment-list {
+	max-height: 238px;
+	overflow: auto;
+}
+
+.comment-list>li {
+	border-bottom: 1px dashed #EEEEEE;
+	margin-top: 5px;
+	position: relative;
+	margin-right: 10px;
+	min-height:69px;
+}
+
+.comment>img {
+	border-radius: 4px 4px 4px 4px;
+	left: 0;
+	position: absolute;
+	top: 5px;
+}
+
+.comment-nick {
+	font-weight: bold;
+	left: 70px;
+	line-height: 12px;
+	position: absolute;
+	top: 8px;
+}
+
+.comment-content {
+	margin-left: 70px;
+	padding-top: 30px;
+}
+
+.comment-post-time {
+	color: #999999;
+	position: absolute;
+	right: 0;
+}
+
+.comment-tips-wrapper {
+	text-align: center;
+	padding-top: 85px;
+}
+
+.comment-tips {
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+/*歌曲列表  END*/

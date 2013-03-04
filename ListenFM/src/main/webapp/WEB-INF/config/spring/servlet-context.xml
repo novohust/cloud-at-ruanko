@@ -24,14 +24,14 @@
 			<beans:bean
 				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<beans:property name="objectMapper">
-					<beans:bean class="org.hustsse.listenfm.utils.HibernateAwareObjectMapper" />
+					<beans:bean class="org.hustsse.cloud.utils.HibernateAwareObjectMapper" />
 				</beans:property>
 			</beans:bean>
 		</message-converters>
 	</annotation-driven>
 
 	<!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="org.hustsse.listenfm"
+	<context:component-scan base-package="org.hustsse.cloud"
 		use-default-filters="false">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -47,10 +47,10 @@
 	<default-servlet-handler />
 
 	<!-- 定义无需Controller的url<->view直接映射 -->
-	<!-- 首页 <view-controller path="/" view-name="index" /> -->
+	<!-- 首页
+	 <view-controller path="/" view-name="index" /> -->
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources
-		in the /WEB-INF/views directory -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp  -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/" />

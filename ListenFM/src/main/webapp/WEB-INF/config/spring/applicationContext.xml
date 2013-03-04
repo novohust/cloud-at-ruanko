@@ -15,7 +15,7 @@
 	<description>Spring Root Container</description>
 
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
-	<context:component-scan base-package="org.hustsse.listenfm">
+	<context:component-scan base-package="org.hustsse.cloud">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation"
@@ -72,7 +72,7 @@
 					<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache/ehcache-hibernate-local.xml</prop> -->
 			</props>
 		</property>
-		<property name="packagesToScan" value="org.hustsse.listenfm.entity" />
+		<property name="packagesToScan" value="org.hustsse.cloud.entity" />
 		<!-- named query ; configed in annotation <property name="mappingLocations">
 			<list> <value>/WEB-INF/config/orm-*.xml</value> </list> </property> -->
 	</bean>
