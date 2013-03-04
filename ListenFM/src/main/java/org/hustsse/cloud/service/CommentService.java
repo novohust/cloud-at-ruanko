@@ -18,8 +18,13 @@ public class CommentService {
 	public List<Comment> findCommentByTrackId(Long trackId, int pageNo, int pageSize) {
 		Page<Comment> page = new Page<Comment>(pageSize);
 		page.setPageNo(pageNo);
-		page = commentDao.findPage(page, "from Comment where track.id = ?", trackId);
+		page = commentDao.findPage(page, "from Comment where track.id = ? order by postTime desc", trackId);
 		return page.getResult();
+	}
+
+	@Transactional(readOnly = false)
+	public void addComment(Comment comment) {
+		commentDao.save(comment);
 	}
 
 

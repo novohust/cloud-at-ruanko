@@ -89,7 +89,7 @@ public class TrackService {
 	public List<Track> findLatestTracks(int num) {
 		Page<Track> page = new Page<Track>(num);
 		page.setPageNo(1);
-		trackDao.findPage(page, "from Track order by uploadTime asc");
+		trackDao.findPage(page, "from Track order by uploadTime desc");
 		return page.getResult();
 	}
 
