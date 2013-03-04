@@ -11,19 +11,19 @@
       </ul>
     </div>
 
-    <div class="detail-right">
+    <div class="detail-right" id="comment-area-${track.id}">
       	<c:choose>
       		<c:when test="${latestComments==null||fn:length(latestComments)==0}">
 				<div class="comment-tips-wrapper">
                   <div class="comment-tips">这首歌怎么样？快来评论一下吧！</div>
-                  <button class="btn btn-primary btn-mini" data-toggle="modal" data-target="#comment-modal">发表评论</button>
+                  <button class="btn btn-primary btn-mini" onclick="prepareCommentForm(${track.id});" data-toggle="modal" data-target="#comment-modal">发表评论</button>
                 </div>
       		</c:when>
 
       		<c:otherwise>
 		      <div class="comment-title">
 		        <h6>最新评论</h6>
-		        <button class="btn btn-mini" data-toggle="modal" data-target="#comment-modal">发表评论</button>
+		        <button class="btn btn-mini" onclick="prepareCommentForm(${track.id});" data-toggle="modal" data-target="#comment-modal">发表评论</button>
 		      </div>
 		      <ul class="comment-list">
 		      	<c:forEach var="comment" items="${latestComments}">

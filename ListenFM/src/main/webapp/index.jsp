@@ -66,36 +66,39 @@
     <script src="${ctx}/static/js/jquery-ui-slider.js"></script>
     <script src="${ctx}/static/js/jquery.form.js"></script>
     <script src="${ctx}/static/js/jquery.nicescroll.min.js"></script>
+    <script src="${ctx}/static/js/moment.min.js"></script>
 
 
 	<!-- 评论弹出框 -->
       <div class="modal hide fade" id="comment-modal">
+      	  <a href="" style="display:none" id="comment-area-id"></a>
           <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
           <h4>发表评论</h4>
           </div>
           <div class="modal-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="comment-form" action="${ctx}/comment/add" method="post">
+                      <input type="hidden" id="comment-input-track-id" name="track.id">
                 <fieldset>
                   <div class="control-group error">
                     <label for="input01" class="control-label">邮箱</label>
                     <div class="controls">
-                      <input type="text" id="input01" >
+                      <input type="text" id="input01" name="email">
                       <span class="help-inline">邮箱不能为空</span>
                     </div>
                   </div>
 
                   <div class="control-group">
-                    <label for="input01" class="control-label">用户名</label>
+                    <label for="input02" class="control-label">用户名</label>
                     <div class="controls">
-                      <input type="text" id="input01" >
+                      <input type="text" id="input02" name="name" >
                     </div>
                   </div>
 
                   <div class="control-group">
                     <label for="textarea" class="control-label">评论内容</label>
                     <div class="controls">
-                      <textarea rows="3" id="textarea" ></textarea>
+                      <textarea rows="3" id="textarea" name="content"></textarea>
                     </div>
                   </div>
 
@@ -103,8 +106,8 @@
               </form>
           </div>
           <div class="modal-footer">
-          <a href="#" class="btn btn-mini" data-dismiss="modal">取消</a>
-          <a href="#" class="btn btn-primary btn-mini">确定</a>
+          <a href="javascript:" class="btn btn-primary btn-mini" onclick="postComment();">确定</a>
+          <a href="javascript:" class="btn btn-mini" data-dismiss="modal" id="dismiss-comment-modal-btn">取消</a>
           </div>
       </div>
 
@@ -129,6 +132,67 @@
 				$("html").getNiceScroll().resize();
 			}, 500);
         });
+
+        function postComment(){
+        	var trackId = $('#comment-input-track-id').val();
+			$("#comment-form").ajaxSubmit({
+				resetForm:true,
+				beforeSubmit:function(){
+					// TODO 校验
+					//$('#upload-track-form input').attr('disabled','disabled');
+					//$('#btn-add-track').addClass('disabled');
+					//$('#uploading-tip').text("上传中...").show();
+				},
+				success:function(data){
+					/*$('#upload-track-form input').removeAttr('disabled');
+					$('#upload-track-form .file-name').text('');
+					$('#btn-add-track').removeClass('disabled');
+					$('#uploading-tip').text("上传成功！").show();*/
+
+					var c = eval(data).result;
+					$('#dismiss-comment-modal-btn').click();
+					var a = $('#'+$('#comment-area-id').attr('href'));
+
+					//已有评论列表
+					if(a.children('ul.comment-list').length > 0){
+						var n = $(
+								'<li class="comment" style="display:none;">'+
+						          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=55">'+
+						          '<span class="comment-nick">'+c.name+'</span>'+
+						          '<span class="comment-post-time">'+moment(c.postTime).format('YYYY/MM/DD HH:mm')+'</span>'+
+						          '<div class="comment-content">'+c.content+'</div>'+
+						        '</li>'
+								);
+						a.children('ul.comment-list').prepend(n);
+						n.slideToggle('slow');
+					}
+					//没有评论
+					else{
+						var ele = $(
+						'<div class="comment-title">'+
+						'<h6>最新评论</h6>'+
+						'<button class="btn btn-mini" data-target="#comment-modal" data-toggle="modal" onclick="prepareCommentForm('+trackId+');">发表评论</button>'+
+						'</div>'+
+						'<ul class="comment-list">'+
+						'<li class="comment">'+
+				          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=55">'+
+				          '<span class="comment-nick">'+c.name+'</span>'+
+				          '<span class="comment-post-time">'+moment(c.postTime).format('YYYY/MM/DD HH:mm')+'</span>'+
+				          '<div class="comment-content">'+c.content+'</div>'+
+				        '</li>'+
+						'</ul>'
+						).hide();
+						a.html('').prepend(ele);
+						ele.fadeIn('slow');
+					}
+				}
+			});
+        }
+
+        function prepareCommentForm(trackId){
+        	$('#comment-input-track-id').val(trackId);
+        	$('#comment-area-id').attr('href','comment-area-'+trackId);
+        }
     </script>
 
   </body>
