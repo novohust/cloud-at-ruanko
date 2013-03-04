@@ -28,7 +28,7 @@
 		      <ul class="comment-list">
 		      	<c:forEach var="comment" items="${latestComments}">
 			        <li class="comment">
-			          <img src="http://www.gravatar.com/avatar/${comment.emailHash}/?s=55" alt="">
+			          <img src="http://www.gravatar.com/avatar/${comment.emailHash}/?s=48" alt="">
 			          <span class="comment-nick">${comment.name}</span>
 			          <span class="comment-post-time"><fmt:formatDate value="${comment.postTime}"  pattern="yyyy/MM/dd HH:mm"/></span>
 			          <div class="comment-content">${comment.content}</div>

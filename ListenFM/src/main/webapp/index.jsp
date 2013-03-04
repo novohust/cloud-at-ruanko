@@ -27,7 +27,7 @@
 
 	 <!-- 上导航条  begin -->
       <div id="nav-top" class="navbar navbar-inverse">
-         <div class="navbar-inner">
+         <div id="nav-inner" class="navbar-inner">
            <div class="container">
             <!-- <a id="logo" href="#"><img src="static/img/logo.png"></a> -->
              <a class="brand" href="${ctx}">Cloud | 在云中</a>
@@ -122,17 +122,45 @@
 				$("#content-wrapper").load($(this).attr('href'));
         	});
 
+
+			/**
+			* 歌曲列表。
+				1. 展开时的css切换；
+				2. 歌曲详情的ajax load；
+			*/
+			$('.track-list').live('show hidden',function(event){
+                $(event.target).parent().toggleClass('white-panel').toggleClass('accordion-group');
+            });
+
+			$('*[data-toggle="tooltip"]').tooltip();
+
+            $('.list-track-name a').live('click',function(event){
+            	event.stopPropagation();
+            	event.preventDefault();
+            	var collapseBody = $($(this).attr('href'));
+            	if(collapseBody.height()>0){
+            		collapseBody.collapse('hide');
+            	}else{
+	            	collapseBody.find('.accordion-inner').load(ctx+'/track/'+$(this).attr('track-id'),{},function(){
+	            		collapseBody.collapse('show');
+	            	});
+            	}
+            });
+
 			// jquery nicescroll for the body
-			$("html").niceScroll({
+			/*$("html").niceScroll({
 				autohidemode:false,
 				cursoropacitymax:0.8,
 				cursorborder:'1px solid #999'
 			});
 			setInterval(function(){
 				$("html").getNiceScroll().resize();
-			}, 500);
+			}, 500);*/
         });
 
+        /**
+         	发表评论
+        */
         function postComment(){
         	var trackId = $('#comment-input-track-id').val();
 			$("#comment-form").ajaxSubmit({
@@ -157,14 +185,14 @@
 					if(a.children('ul.comment-list').length > 0){
 						var n = $(
 								'<li class="comment" style="display:none;">'+
-						          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=55">'+
+						          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=48">'+
 						          '<span class="comment-nick">'+c.name+'</span>'+
 						          '<span class="comment-post-time">'+moment(c.postTime).format('YYYY/MM/DD HH:mm')+'</span>'+
 						          '<div class="comment-content">'+c.content+'</div>'+
 						        '</li>'
 								);
 						a.children('ul.comment-list').prepend(n);
-						n.slideToggle('slow');
+						n.slideDown('1000');
 					}
 					//没有评论
 					else{
@@ -175,7 +203,7 @@
 						'</div>'+
 						'<ul class="comment-list">'+
 						'<li class="comment">'+
-				          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=55">'+
+				          '<img alt="" src="http://www.gravatar.com/avatar/'+c.emailHash+'/?s=48">'+
 				          '<span class="comment-nick">'+c.name+'</span>'+
 				          '<span class="comment-post-time">'+moment(c.postTime).format('YYYY/MM/DD HH:mm')+'</span>'+
 				          '<div class="comment-content">'+c.content+'</div>'+

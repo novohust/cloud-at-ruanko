@@ -273,11 +273,11 @@ h5 {
 }
 
 .comment-list>li {
-	border-bottom: 1px dashed #EEEEEE;
+	border-bottom: 1px dashed #D5D5D5;
 	margin-top: 5px;
 	position: relative;
 	margin-right: 10px;
-	min-height:69px;
+	min-height:65px;
 }
 
 .comment>img {

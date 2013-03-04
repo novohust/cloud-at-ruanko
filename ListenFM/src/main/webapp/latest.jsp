@@ -24,26 +24,6 @@
 
           </div>
           <script type="text/javascript">
-	        $(function(){
-	            $('.track-list').on('show hidden',function(event){
-	                $(event.target).parent().toggleClass('white-panel').toggleClass('accordion-group');
-	            });
-	            $('a[title]').tooltip();
-
-	            $('.list-track-name a').live('click',function(event){
-	            	event.stopPropagation();
-	            	event.preventDefault();
-	            	var collapseBody = $($(this).attr('href'));
-	            	if(collapseBody.height()>0){
-	            		collapseBody.collapse('hide');
-	            	}else{
-		            	collapseBody.find('.accordion-inner').load(ctx+'/track/'+$(this).attr('track-id'),{},function(){
-		            		collapseBody.collapse('show');
-		            	});
-	            	}
-	            });
-	        });
-
 	        function getLatestTracksByCate(event,cateId){
 	        	if($(event.target).parent().is(".active"))
 	        		return;
