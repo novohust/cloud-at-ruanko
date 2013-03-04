@@ -93,7 +93,7 @@ public class TrackService {
 		return page.getResult();
 	}
 
-	public Object findLatestTracks(Long id,int num) {
+	public List<Track> findLatestTracks(Long id,int num) {
 		Page<Track> page = new Page<Track>(num);
 		page.setPageNo(1);
 		trackDao.findPage(page, "from Track where category.id = ? order by uploadTime asc",id);
@@ -104,5 +104,26 @@ public class TrackService {
 		return trackDao.findUniqueBy("id", id);
 	}
 
+	public List<Track> findTopDownloadTracks(int num) {
+		Page<Track> page = new Page<Track>(num);
+		page.setPageNo(1);
+		trackDao.findPage(page, "from Track order by downloadTimes desc");
+		return page.getResult();
+	}
+
+	public List<Track> findTopPlayTracks(int num) {
+		Page<Track> page = new Page<Track>(num);
+		page.setPageNo(1);
+		trackDao.findPage(page, "from Track order by playTimes desc");
+		return page.getResult();
+	}
+
+	public Page<Track> findTracksByCategoryId(Long categoryId, int pageNo, int pageSize) {
+		Page<Track> page = new Page<Track>(pageSize);
+		page.setPageNo(pageNo);
+		page.setAutoCount(true);
+		trackDao.findPage(page, "from Track where category.id = ? order by uploadTimes desc",categoryId);
+		return page;
+	}
 
 }

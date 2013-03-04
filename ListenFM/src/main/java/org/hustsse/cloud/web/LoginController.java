@@ -51,4 +51,9 @@ public class LoginController {
 		map.put("latestTracks", trackService.findLatestTracks(allCate.get(0).getId(),10));
 		return "latest";
 	}
+
+	@RequestMapping(value="/popular")
+	public String popular(ModelMap map) {
+		return "popular";
+	}
 }

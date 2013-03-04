@@ -2,6 +2,7 @@ package org.hustsse.cloud.web;
 
 import java.util.List;
 
+import org.hustsse.cloud.dao.base.Page;
 import org.hustsse.cloud.entity.Comment;
 import org.hustsse.cloud.entity.Track;
 import org.hustsse.cloud.service.CommentService;
@@ -61,5 +62,25 @@ public class TrackController {
 		return "latest-track-list";
 	}
 
+	@RequestMapping(value = "/top-download-track-list")
+	public String topDownloadTrackList(ModelMap map) {
+		List<Track> topDownloadTrackList = trackService.findTopDownloadTracks(10);
+		map.put("topDownloadTrackList", topDownloadTrackList);
+		return "top-download-track-list";
+	}
+
+	@RequestMapping(value = "/top-play-track-list")
+	public String topPlayTrackList(ModelMap map) {
+		List<Track> topPlayTrackList = trackService.findTopPlayTracks(10);
+		map.put("topPlayTrackList", topPlayTrackList);
+		return "top-play-track-list";
+	}
+
+	@RequestMapping(value = "/{categoryId}/page")
+	public String findTracksByCategoryId(Long categoryId,@RequestParam int pageNo,@RequestParam int pageSize,ModelMap map) {
+		Page<Track> page = trackService.findTracksByCategoryId(categoryId,pageNo,pageSize);
+		map.put("page", page);
+		return "category-track-list";
+	}
 
 }
