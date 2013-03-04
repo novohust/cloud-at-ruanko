@@ -122,7 +122,8 @@
 			// jquery nicescroll for the body
 			$("html").niceScroll({
 				autohidemode:false,
-				cursorborder:'1px solid #666'
+				cursoropacitymax:0.8,
+				cursorborder:'1px solid #999'
 			});
 			setInterval(function(){
 				$("html").getNiceScroll().resize();

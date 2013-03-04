@@ -41,7 +41,6 @@ public class LoginController {
 	public String category(ModelMap map) {
 		List<Category> allCate = categoryService.findAllCategories();
 		map.put("allCate", allCate);
-		map.put("latestTracks", trackService.findLatestTracks(allCate.get(0).getId(),10));
 		return "category";
 	}
 

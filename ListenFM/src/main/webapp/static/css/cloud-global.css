@@ -199,6 +199,8 @@ h5 {
 
 .track-detail-wrapper {
 	padding-top: 5px;
+	overflow: hidden;
+	min-height: 250px;
 }
 
 .detail-left {

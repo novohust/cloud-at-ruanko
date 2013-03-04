@@ -52,7 +52,14 @@ public class TrackController {
 		List<Comment> latestComments = commentService.findCommentByTrackId(id,1,10);
 		map.put("track", t);
 		map.put("latestComments", latestComments);
-		return "/track";
+		return "track";
 	}
+
+	@RequestMapping(value = "/latest/{cateId}")
+	public String latestTrackList(ModelMap map,@PathVariable Long cateId) {
+		map.put("latestTracks", trackService.findLatestTracks(cateId,10));
+		return "latest-track-list";
+	}
+
 
 }
